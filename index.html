@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore sample poultry supplies from the Chicken Farming Ecommerce project.">
+  <title>Chicken Farming | Sample catalogue</title>
+  <link rel="stylesheet" href="store.css">
+  <script src="products.js" defer></script>
+  <script src="store.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✳</span><span>THE POULTRY<br><b>SUPPLY CO.</b></span></a>
+    <nav aria-label="Main navigation"><a href="#catalogue">Explore supplies</a><a href="#about">About this project</a></nav>
+    <span class="demo-tag">SAMPLE STORE</span>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy"><p class="eyebrow"><span></span> THE EVERYDAY FLOCK</p><h1>Good care starts<br>with the <em>right supplies.</em></h1><p>Explore a practical collection of feed, equipment and essentials for the work of keeping chickens.</p><a class="primary" href="#catalogue">Explore the collection <span aria-hidden="true">↗</span></a></div>
+      <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="coop"><div class="roof"></div><div class="coop-body"><div class="window"></div><div class="door"></div></div></div><div class="art-label">FOR THE FLOCK<br><strong>Made for the everyday.</strong></div></div>
+    </section>
+    <section class="benefits" aria-label="Catalogue highlights"><span>01 <b>Everyday essentials</b></span><span>02 <b>Feed & nutrition</b></span><span>03 <b>Flock care</b></span></section>
+    <section class="catalogue" id="catalogue">
+      <div class="section-head"><div><p class="eyebrow">THE COLLECTION / 01</p><h2>Find what your flock needs.</h2><p>Browse the original sample products by category or search by name.</p></div><span class="catalogue-mark" aria-hidden="true">✳</span></div>
+      <div class="controls"><label for="search">Search products<input type="search" id="search" placeholder="Try “feed” or “coop”"></label><label for="category">Category<select id="category"><option value="">All categories</option></select></label></div>
+      <p id="count" class="count" role="status"></p>
+      <div id="products" class="product-grid"></div>
+      <noscript><p>Enable JavaScript to browse the sample product list.</p></noscript>
+    </section>
+    <section id="about" class="about"><div><p class="eyebrow">ABOUT THIS PROJECT / 02</p><h2>Built for the people<br>behind the flock.</h2></div><div><p>This catalogue is a working preview based on sample data from the original chicken farming ecommerce project.</p><p>Product details are illustrative. Prices, stock, checkout and delivery still need to be confirmed before the store can accept orders.</p><a href="#catalogue">Back to collection ↑</a></div></section>
+  </main>
+  <footer><strong>THE POULTRY SUPPLY CO.</strong><span>Sample catalogue · Workshop preview</span></footer>
+</body>
+</html>

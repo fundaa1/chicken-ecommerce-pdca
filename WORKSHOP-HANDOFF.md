@@ -1,30 +1,36 @@
 # Workshop handoff — Chicken Farming Ecommerce
 
-## Identity and scope
+## Project identity
 
-Source https://github.com/fundaa1/chicken-ecommerce at commit `50bdd199067a64690ea40fe2205650359930ad2c`. Working copy https://github.com/fundaa1/chicken-ecommerce-pdca, branch main. Codex inspected the source and prepared a static sample catalogue. No work was delegated. Commissioner acceptance is pending.
+Source: https://github.com/fundaa1/chicken-ecommerce at `50bdd199067a64690ea40fe2205650359930ad2c`. Working copy: https://github.com/fundaa1/chicken-ecommerce-pdca, branch `main`. The commissioner owns acceptance. Codex completed the recorded work; no work was delegated.
 
-## Preview and contract
+## Current product and preview
 
-Open `preview/index.html` directly in a browser. It is a static snapshot of the ten products in `sample-products.csv`, generated during this work. It is a review aid, not a running WordPress store. Prices and stock are deliberately omitted because their currency and current validity are not established. Changes to the CSV are not reflected automatically. Checkout, shipping, payments and inventory are unverified.
+The root `index.html`, `store.css`, `store.js` and `products.js` provide a buildless catalogue. Open `index.html` in a modern browser, or serve the repository root with a static HTTP server. There is no installation or WordPress runtime requirement for the catalogue. A static host such as Vercel can serve the root directly with no build command. Deployment has not been performed or verified.
 
-## PDCA-STEI
+The Poultry Supply Co. is a provisional name for this sample preview. The ten products and descriptions come from `sample-products.csv`. `products.js` is a manually generated snapshot of names, descriptions and categories; update it when the CSV changes. Treat all content as illustrative until the commissioner confirms it. Prices and stock are omitted because currency and validity are unknown.
 
-- Plan: establish a reproducible local WordPress preview and document dependencies and evidence.
-- Do: clone the source into a separate public working repository and prepare the static sample catalogue and this handoff.
-- Check: source HEAD matched the base on 6 November 2026. The CSV contains ten sample rows. Docker, PHP, WP-CLI and MySQL commands were not available on the current machine. WordPress startup, import, checkout and shipping were not tested.
-- Act: the full preview remains incomplete. Establish an available Docker environment, then verify and repair the stack before commissioner acceptance.
-- Standardise: preserve sample data and do not commit credentials. The static preview is not proof of live store behavior.
-- Train: open the static HTML to review product content; for the full store follow the investigation steps below once Docker is available.
-- Enforce: require a clean startup, restart with data retained, sample storefront walkthrough and documented results before marking the full preview complete.
-- Improve: verify sample product import and shipping with representative test cases after the preview is running.
+The inherited `wp-content`, Compose configuration and documentation remain as historical source material. The new catalogue does not use them. The earlier `preview/index.html` is the initial static catalogue snapshot.
 
-## Setup investigation for the next agent
+## Contracts and limitations
 
-1. Check `docker --version`, `docker compose version` and Docker daemon availability. Inspect the working tree, running containers, ports and existing volumes before changes.
-2. The source Compose file uses environment variables `DB_USER`, `DB_PASSWORD`, `DB_NAME` and `DB_ROOT_PASSWORD`. Generate local-only values in an untracked `.env`. Do not publish them.
-3. Investigate the server mismatch: `nginx.conf` forwards PHP to `wordpress:9000`, while Compose uses the standard `wordpress:latest` image. Do not assume that the Nginx route works. Determine the chosen WordPress image variant and test the correct port and serving path.
-4. The Compose configuration does not install WooCommerce. Identify and install a compatible version in an isolated test environment, then verify custom plugin activation and import of sample data. Record exact image and plugin versions and any changes needed to reproduce them.
-5. Verify from a clean environment, record commands and outcomes, and confirm persistence after a non-destructive restart. Do not remove existing volumes or data without checking ownership and impact.
+Search filters product names and descriptions. The category selector filters the sample category labels; both filters work together. Results and counts update in the browser. The app makes no API calls and stores no customer data.
 
-The inherited README and implementation plan make claims that have not been verified. The README states GPL v2 or later; verify rights for all dependencies and assets before reuse. A production deployment, payments and real orders are outside this preview exercise.
+There is no cart, checkout, order storage, payment, shipping calculation, inventory management or administrator interface. This is a catalogue preview and cannot accept orders. Do not describe it as a completed ecommerce system. A real store needs agreed product ownership and currency, order and fulfilment processes, payment integration, storage, access controls and a verification plan.
+
+## PDCA-STEI migration cycle
+
+- Plan: replace the WordPress dependency for an accessible, deployable first product preview using existing sample data.
+- Do: create a static HTML, CSS and JavaScript catalogue with responsive layout, search and category filtering.
+- Check: `node --check store.js` passed. The local preview loaded in the browser, displayed ten products, and searching for incubator returned the matching item. The product and data labels identify sample content. Category filter and mobile layout need commissioner review.
+- Act: capture commissioner feedback before specifying real commerce behavior.
+- Standardise: the static catalogue is the current entry point. Keep sample data and claims visibly identified.
+- Train: open the local preview, search for incubator, clear the search, and select a category. Check that results and count change.
+- Enforce: run syntax and whitespace checks and a browser walkthrough before accepting changes. A documented gate is not automated enforcement.
+- Improve: confirm branding, product data, South African currency and the first real order workflow. Select hosting and commerce services based on those requirements before implementing checkout.
+
+## Maintenance and reuse
+
+At each change check `git status`, update this handoff and the workshop register, run `node --check store.js` and `git diff --check`, and verify relevant browser flows. Review the original source and dependency/asset rights before reuse. The inherited README states GPL v2 or later, but individual rights have not been audited.
+
+Prior work at `0bbe973` provided a static sample list and documented a Docker setup blocker. Docker and the original WordPress stack were not tested on this machine. The new static catalogue avoids that runtime dependency for the preview.

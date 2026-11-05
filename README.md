@@ -1,6 +1,6 @@
 # Chicken Farming Ecommerce Site
 
-Workshop status and preview: [WORKSHOP-HANDOFF.md](WORKSHOP-HANDOFF.md). The original setup claims below have not yet been verified.
+Current catalogue: open [index.html](index.html) in a browser. It uses static HTML, CSS and JavaScript and requires no WordPress installation. See [WORKSHOP-HANDOFF.md](WORKSHOP-HANDOFF.md) for scope, preview, contracts and current status. The original setup claims below describe historical source material and have not been verified.
 
 A WordPress-based ecommerce platform for chicken farming products and educational content.
 
