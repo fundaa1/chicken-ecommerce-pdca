@@ -47,3 +47,16 @@ Prior work at `0bbe973` provided a static sample list and documented a Docker se
 - Improve: add reviewed, product-specific guidance when verified product details and local advice are available. The general equipment guide does not replace an individual product manual.
 - Sources: University of Minnesota Extension, [Raising chickens for eggs](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/raising-chickens-for-eggs) and [Poultry biosecurity basics](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/poultry-biosecurity-basics). Project `educational-content.md` was also reviewed; its detailed veterinary claims have not been independently validated.
 - Work: Codex implemented and verified the change. No work was delegated.
+
+## Product guide expansion cycle
+
+- Plan: give visitors more relevant guidance for the sample coop, incubator and disinfectant.
+- Do: add three illustrated academy guides and direct product links based on their sample categories. Retain the original broad equipment, feed and health guides.
+- Check: JavaScript syntax and whitespace checks passed. Browser inspection confirmed all three links point to their respective guides, and the incubator guide opens and expands. The other two expanded guides and commissioner acceptance are pending.
+- Act: gather review feedback and check product-specific instructions against actual manufacturers before adding factual specifications.
+- Standardise: guide content is general and is not a product manual. Product claims and selection remain illustrative.
+- Train: select “Explore the guide” on the sample coop, incubator or disinfectant, then expand the checklist.
+- Enforce: verify each guide destination and source when editing; obtain relevant professional review before production use.
+- Improve: add verified individual product information as it becomes available.
+- Sources: [Penn State incubator setup](https://extension.psu.edu/programs/4-h/counties/montgomery/programs/school-enrichment/embryology/setting-up-the-incubator), [University of Minnesota chicken care](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/raising-chickens-for-eggs), and [University of Minnesota cleaning and disinfection](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/reducing-salmonella-risk-in-table-egg-production).
+- Work: Codex implemented and verified the change. No work was delegated.

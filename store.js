@@ -21,6 +21,9 @@ const illustrations = {
 };
 
 function productGuide(product) {
+  if (product.categories.includes('coops-housing')) return 'coop';
+  if (product.categories.includes('incubators-brooders')) return 'incubator';
+  if (product.categories.includes('cleaning-supplies')) return 'cleaning';
   if (product.categories.includes('health-medication')) return 'health';
   if (product.categories.includes('feed-nutrition')) return 'feed';
   return 'equipment';
@@ -29,7 +32,8 @@ function productGuide(product) {
 function illustrationFor(product) {
   if (product.name.toLowerCase().includes('coop')) return 'housing';
   if (product.name.toLowerCase().includes('incubator')) return 'incubator';
-  return productGuide(product);
+  const guide = productGuide(product);
+  return guide === 'cleaning' ? 'health' : guide;
 }
 
 function render() {
