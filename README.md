@@ -1,5 +1,7 @@
 # Chicken Farming Ecommerce Site
 
+Workshop status and preview: [WORKSHOP-HANDOFF.md](WORKSHOP-HANDOFF.md). The original setup claims below have not yet been verified.
+
 A WordPress-based ecommerce platform for chicken farming products and educational content.
 
 ## Features
