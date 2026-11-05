@@ -34,3 +34,16 @@ There is no cart, checkout, order storage, payment, shipping calculation, invent
 At each change check `git status`, update this handoff and the workshop register, run `node --check store.js` and `git diff --check`, and verify relevant browser flows. Review the original source and dependency/asset rights before reuse. The inherited README states GPL v2 or later, but individual rights have not been audited.
 
 Prior work at `0bbe973` provided a static sample list and documented a Docker setup blocker. Docker and the original WordPress stack were not tested on this machine. The new static catalogue avoids that runtime dependency for the preview.
+
+## Academy and visual improvement cycle
+
+- Plan: help visitors understand equipment, feed and health-related products through a linked educational section, and add editable visuals to the catalogue.
+- Do: add category-based inline SVG illustrations, product-to-guide links and three expandable academy guides. Illustrations are code-defined and require no external image service.
+- Check: `node --check store.js` and `git diff --check` passed. In a local browser the catalogue showed ten items, the vitamin product linked to the health guide, and its label-check section expanded. A screenshot of the health guide was inspected. Commissioner acceptance is pending.
+- Act: gather commissioner feedback on visuals and coverage before adding more product-specific guidance.
+- Standardise: guides are general educational starting points; product data is illustrative. Health guidance does not supply diagnoses or medicine doses. Product links select broad guide categories.
+- Train: choose “Explore the guide” on a product, then expand the relevant guide. The academy can also be reached from the main navigation.
+- Enforce: review health content with an appropriate local poultry professional before presenting it as production advice, and recheck browser navigation and sources when editing.
+- Improve: add reviewed, product-specific guidance when verified product details and local advice are available. The general equipment guide does not replace an individual product manual.
+- Sources: University of Minnesota Extension, [Raising chickens for eggs](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/raising-chickens-for-eggs) and [Poultry biosecurity basics](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/poultry-biosecurity-basics). Project `educational-content.md` was also reviewed; its detailed veterinary claims have not been independently validated.
+- Work: Codex implemented and verified the change. No work was delegated.
