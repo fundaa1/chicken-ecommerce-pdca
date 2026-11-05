@@ -24,6 +24,8 @@
     <section class="catalogue" id="catalogue">
       <div class="section-head"><div><p class="eyebrow">THE COLLECTION / 01</p><h2>Find what your flock needs.</h2><p>Browse the original sample products by category or search by name.</p></div><span class="catalogue-mark" aria-hidden="true">✳</span></div>
       <div class="controls"><label for="search">Search products<input type="search" id="search" placeholder="Try “feed” or “coop”"></label><label for="category">Category<select id="category"><option value="">All categories</option></select></label></div>
+      <div class="shortlist-bar"><label><input type="checkbox" id="savedOnly"> Show saved products</label><span id="savedCount" aria-live="polite"></span></div>
+      <p id="storageMessage" class="storage-message" role="status"></p>
       <p id="count" class="count" role="status"></p>
       <div id="products" class="product-grid"></div>
       <noscript><p>Enable JavaScript to browse the sample product list.</p></noscript>

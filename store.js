@@ -2,6 +2,28 @@ const search = document.getElementById('search');
 const category = document.getElementById('category');
 const list = document.getElementById('products');
 const count = document.getElementById('count');
+const savedOnly = document.getElementById('savedOnly');
+const savedCount = document.getElementById('savedCount');
+const storageMessage = document.getElementById('storageMessage');
+const storageKey = 'poultry-catalogue-shortlist-v1';
+let saved = new Set();
+try {
+  const data = JSON.parse(localStorage.getItem(storageKey) || '[]');
+  if (Array.isArray(data)) {
+    const names = new Set(products.map(product => product.name));
+    saved = new Set(data.filter(name => typeof name === 'string' && names.has(name)));
+  }
+} catch {
+  storageMessage.textContent = 'Saved products will be available only while this page is open.';
+}
+
+function saveSelection() {
+  try {
+    localStorage.setItem(storageKey, JSON.stringify([...saved]));
+  } catch {
+    storageMessage.textContent = 'Saved products will be available only while this page is open.';
+  }
+}
 
 const label = value => value.replace(/-/g, ' ').replace(/\b\w/g, letter => letter.toUpperCase());
 
@@ -40,14 +62,18 @@ function render() {
   const query = search.value.trim().toLowerCase();
   const matches = products.filter(product =>
     (product.name + ' ' + product.description).toLowerCase().includes(query) &&
-    (!category.value || product.categories.includes(category.value))
+    (!category.value || product.categories.includes(category.value)) &&
+    (!savedOnly.checked || saved.has(product.name))
   );
+  savedCount.textContent = saved.size + (saved.size === 1 ? ' saved product' : ' saved products');
   count.textContent = matches.length + (matches.length === 1 ? ' product' : ' products') + ' shown';
   list.replaceChildren();
   if (!matches.length) {
     const empty = document.createElement('p');
     empty.className = 'empty';
-    empty.textContent = 'No products match. Try another search or category.';
+    empty.textContent = savedOnly.checked && saved.size === 0
+      ? 'No saved products yet. Turn off this filter to explore the catalogue.'
+      : 'No products match. Try another search or category.';
     list.appendChild(empty);
     return;
   }
@@ -74,10 +100,31 @@ function render() {
     guide.href = '#guide-' + productGuide(product);
     guide.textContent = 'Explore the guide ↗';
     guide.setAttribute('aria-label', 'Explore the guide for ' + product.name);
-    card.append(visual, number, name, description, type, guide);
+    const save = document.createElement('button');
+    save.type = 'button';
+    save.className = 'save-product';
+    save.textContent = saved.has(product.name) ? 'Remove from saved' : 'Save product';
+    save.setAttribute('aria-label', (saved.has(product.name) ? 'Remove ' : 'Save ') + product.name);
+    save.setAttribute('aria-pressed', String(saved.has(product.name)));
+    save.addEventListener('click', () => {
+      if (saved.has(product.name)) saved.delete(product.name);
+      else saved.add(product.name);
+      saveSelection();
+      if (savedOnly.checked && !saved.has(product.name)) {
+        render();
+        savedOnly.focus();
+      } else {
+        save.textContent = saved.has(product.name) ? 'Remove from saved' : 'Save product';
+        save.setAttribute('aria-label', (saved.has(product.name) ? 'Remove ' : 'Save ') + product.name);
+        save.setAttribute('aria-pressed', String(saved.has(product.name)));
+        savedCount.textContent = saved.size + (saved.size === 1 ? ' saved product' : ' saved products');
+      }
+    });
+    card.append(visual, number, name, description, type, guide, save);
     list.appendChild(card);
   });
 }
 search.addEventListener('input', render);
 category.addEventListener('change', render);
+savedOnly.addEventListener('change', render);
 render();

@@ -14,7 +14,7 @@ The inherited `wp-content`, Compose configuration and documentation remain as hi
 
 ## Contracts and limitations
 
-Search filters product names and descriptions. The category selector filters the sample category labels; both filters work together. Results and counts update in the browser. The app makes no API calls and stores no customer data.
+Search filters product names and descriptions. The category selector filters the sample category labels; both filters work together. Results and counts update in the browser. The app makes no API calls. Saved product names are stored locally in the browser when storage is available; no account or server-side customer record is created.
 
 There is no cart, checkout, order storage, payment, shipping calculation, inventory management or administrator interface. This is a catalogue preview and cannot accept orders. Do not describe it as a completed ecommerce system. A real store needs agreed product ownership and currency, order and fulfilment processes, payment integration, storage, access controls and a verification plan.
 
@@ -59,4 +59,16 @@ Prior work at `0bbe973` provided a static sample list and documented a Docker se
 - Enforce: verify each guide destination and source when editing; obtain relevant professional review before production use.
 - Improve: add verified individual product information as it becomes available.
 - Sources: [Penn State incubator setup](https://extension.psu.edu/programs/4-h/counties/montgomery/programs/school-enrichment/embryology/setting-up-the-incubator), [University of Minnesota chicken care](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/raising-chickens-for-eggs), and [University of Minnesota cleaning and disinfection](https://extension.umn.edu/agriculture/animals-and-livestock/poultry/reducing-salmonella-risk-in-table-egg-production).
+- Work: Codex implemented and verified the change. No work was delegated.
+
+## Shortlist improvement cycle
+
+- Plan: let a visitor keep a small list of sample products while exploring the catalogue and academy.
+- Do: add save and remove buttons, a saved count, and a saved-only filter that works alongside search and category filters.
+- Check: JavaScript syntax and whitespace checks passed. In the browser, a product was saved, filtered, restored after refresh, and removed. Commissioner acceptance is pending.
+- Act: capture commissioner feedback before adding any order functionality.
+- Standardise: selection is stored by sample product name in browser local storage. The filter resets on refresh; the selection persists when storage is available. If storage is unavailable, the page reports that selection lasts only for the current page session. Renaming or removing a product drops its prior saved selection.
+- Train: choose Save product, enable Show saved products, and follow a guide link. Remove a product using its saved button.
+- Enforce: recheck save, filter, refresh and removal when changing catalogue or storage code. No automated acceptance gate is in place.
+- Improve: replace names with stable product IDs when authoritative product records are introduced; confirm actual prices, inventory and order flow before any commerce implementation.
 - Work: Codex implemented and verified the change. No work was delegated.
